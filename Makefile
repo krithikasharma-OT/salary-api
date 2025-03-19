@@ -20,5 +20,8 @@ docker-build:
 docker-push:
 	docker push ${IMAGE_REGISTRY}/${IMAGE_NAME}:${APP_VERSION}
 
-run-migrations:
+create-keyspace:
+	docker exec -it scylladb cqlsh -e "CREATE KEYSPACE IF NOT EXISTS employee_db WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};"
+
+run-migrations: create-keyspace
 	migrate -source file://migration -database "$(shell cat migration.json | jq -r '.database')" up
