@@ -25,3 +25,6 @@ create-keyspace:
 
 run-migrations: create-keyspace
 	migrate -source file://migration -database "$(shell cat migration.json | jq -r '.database')" up
+
+deploy:
+	docker run -d --name salary ${IMAGE_REGISTRY}/${IMAGE_NAME}:${APP_VERSION}
