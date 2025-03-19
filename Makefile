@@ -1,5 +1,5 @@
-APP_VERSION ?= v0.1.0
-IMAGE_REGISTRY ?= quay.io/opstree
+APP_VERSION ?= v1.0
+IMAGE_REGISTRY ?= krithikasharma
 IMAGE_NAME ?= salary-api
 
 # Build salary api
